@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="uz" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kimyo — 104 ta qiziqarli fakt, 3D molekulalar, davriy jadval va 24 til. Mualliflar: Rustamov Boʻrixon, Oqilov Qosim, Raximxojayev Ubaydulla.">
+<title>Kimyo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%9A%97%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#070b14;--bg2:#0b1220;--card:#101a2e;--line:#1d2b47;--tx:#e8eefc;--mut:#93a4c3;--acc:#22e0b8;--acc2:#7c5cff;--gold:#ffd166}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(600px 400px at 15% 10%,rgba(34,224,184,.09),transparent 60%),
+ radial-gradient(700px 500px at 85% 30%,rgba(124,92,255,.10),transparent 60%),
+ radial-gradient(500px 400px at 50% 90%,rgba(77,171,247,.07),transparent 60%)}
+::selection{background:rgba(34,224,184,.35)}
+/* ---------- HEADER ---------- */
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 18px;background:rgba(7,11,20,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-size:20px;font-weight:800;text-decoration:none;color:var(--tx);white-space:nowrap}
+.brand span{background:linear-gradient(90deg,#22e0b8,#7c5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav{display:flex;gap:2px;margin-inline-start:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--mut);text-decoration:none;font-size:13.5px;padding:7px 10px;border-radius:9px;white-space:nowrap;transition:.2s}
+.nav a:hover{color:var(--tx);background:rgba(255,255,255,.06)}
+#langSel{background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:13.5px;max-width:180px;cursor:pointer}
+/* ---------- HERO ---------- */
+.hero{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;padding:64px 20px 40px}
+.badge{display:inline-block;border:1px solid rgba(34,224,184,.5);color:var(--acc);font-size:12.5px;padding:6px 14px;border-radius:999px;letter-spacing:.5px}
+h1{font-size:clamp(54px,9vw,94px);line-height:1.05;margin:10px 0 8px;background:linear-gradient(90deg,#22e0b8 10%,#4dabf7 50%,#7c5cff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{color:var(--mut);font-size:17px;line-height:1.6;max-width:560px}
+.herobtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{background:linear-gradient(135deg,#22e0b8,#4dabf7);color:#04121c;font-weight:700;border:none;padding:12px 20px;border-radius:12px;cursor:pointer;font-size:15px;transition:.2s;box-shadow:0 6px 20px rgba(34,224,184,.25)}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:var(--tx);border:1px solid var(--line);box-shadow:none}
+.btn.ghost:hover{border-color:var(--acc)}
+.btn.small{padding:9px 14px;font-size:13.5px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px}
+.stats b{display:block;font-size:30px;color:var(--acc)}
+.stats span{font-size:12px;color:var(--mut)}
+/* ---------- 3D ATOM (pure CSS) ---------- */
+.atomwrap{perspective:900px;width:300px;height:300px;margin:auto;position:relative}
+.atomwrap::before{content:"";position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,rgba(34,224,184,.14),transparent 65%);filter:blur(6px)}
+.atom{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:atomspin 16s linear infinite}
+@keyframes atomspin{from{transform:rotateX(-14deg) rotateY(0)}to{transform:rotateX(-14deg) rotateY(360deg)}}
+.nucleus{position:absolute;left:50%;top:50%;transform-style:preserve-3d;animation:nuc 3s ease-in-out infinite}
+@keyframes nuc{50%{transform:scale(1.18)}}
+.nucleus span{position:absolute;width:26px;height:26px;border-radius:50%;left:-13px;top:-13px}
+.np{background:radial-gradient(circle at 35% 30%,#ffb3b3,#ff4d4d 60%,#b71c1c);box-shadow:0 0 18px rgba(255,80,80,.8)}
+.nn{background:radial-gradient(circle at 35% 30%,#b3c6ff,#5b8cff 60%,#274bcc);box-shadow:0 0 18px rgba(90,140,255,.8)}
+.p1{transform:translate3d(-10px,-8px,6px)}.p2{transform:translate3d(10px,-6px,-8px)}.p3{transform:translate3d(0,10px,10px)}
+.n1{transform:translate3d(8px,8px,-4px)}.n2{transform:translate3d(-9px,6px,-10px)}.n3{transform:translate3d(0,-12px,-2px)}
+.orb{position:absolute;inset:0;border:1.5px solid rgba(34,224,184,.4);border-radius:50%;transform-style:preserve-3d}
+.o1{transform:rotateX(72deg)}
+.o2{transform:rotateX(72deg) rotateY(60deg)}
+.o3{transform:rotateX(72deg) rotateY(-60deg)}
+.spin{position:absolute;inset:0;transform-style:preserve-3d;animation:orbitspin linear infinite}
+.s1{animation-duration:2.6s}.s2{animation-duration:3.4s;animation-delay:-.8s}.s3{animation-duration:4.2s;animation-delay:-1.6s}
+@keyframes orbitspin{from{transform:rotateZ(0)}to{transform:rotateZ(360deg)}}
+.e{position:absolute;left:50%;top:-7px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d8fff5,#22e0b8 60%,#0e8f77);box-shadow:0 0 14px #22e0b8,0 0 30px rgba(34,224,184,.6)}
+/* ---------- SECTIONS ---------- */
+.sec{max-width:1180px;margin:0 auto;padding:46px 20px}
+.sec h2{font-size:30px}
+.sub{color:var(--mut);margin:6px 0 20px;font-size:15px}
+.rev{opacity:0;transform:translateY(24px);transition:.6s}
+.rev.on{opacity:1;transform:none}
+/* ---------- FACTS ---------- */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+#q{flex:1;min-width:220px;background:var(--card);border:1px solid var(--line);color:var(--tx);padding:12px 16px;border-radius:12px;font-size:15px;outline:none}
+#q:focus{border-color:var(--acc)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--tx);padding:7px 12px;border-radius:999px;cursor:pointer;font-size:13px;transition:.2s}
+.chip:hover{border-color:var(--acc)}
+.chip.on{background:linear-gradient(135deg,rgba(34,224,184,.22),rgba(124,92,255,.22));border-color:var(--acc)}
+.note{font-size:12.5px;color:var(--gold);margin:6px 0}
+.shown{color:var(--mut);font-size:13px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:12px}
+.fcard{background:linear-gradient(160deg,#101a2e,#0c1424);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px;transition:.25s}
+.fcard:hover{transform:translateY(-4px);border-color:rgba(34,224,184,.6);box-shadow:0 10px 30px rgba(34,224,184,.08)}
+.fmeta{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--mut)}
+.fcat{color:var(--acc)}
+.fcard p{font-size:14.5px;line-height:1.55;flex:1}
+.copy{align-self:flex-start;background:transparent;border:1px solid var(--line);color:var(--mut);padding:5px 10px;border-radius:8px;cursor:pointer;font-size:12px;transition:.2s}
+.copy:hover{color:var(--acc);border-color:var(--acc)}
+.spot{border:1px solid var(--acc);background:linear-gradient(135deg,rgba(34,224,184,.12),rgba(124,92,255,.12));border-radius:16px;padding:18px;margin-bottom:16px}
+.spot p{font-size:17px;line-height:1.6;margin-top:8px}
+.spot.pop{animation:pop .5s}
+@keyframes pop{from{transform:scale(.96);opacity:.3}}
+.none{text-align:center;color:var(--mut);padding:30px}
+.morewrap{text-align:center;margin-top:20px}
+/* ---------- 3D LAB ---------- */
+.labcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px}
+.molbtns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.molstage{position:relative}
+#molCanvas{display:block;width:100%;height:400px;background:radial-gradient(circle at 50% 45%,#0e1830,#070b14);border-radius:14px;border:1px solid var(--line);touch-action:none;cursor:grab}
+#molCanvas:active{cursor:grabbing}
+.molhud{position:absolute;left:14px;right:14px;bottom:12px;display:flex;justify-content:space-between;gap:10px;pointer-events:none}
+.molname{font-weight:700;color:var(--acc)}
+.hint{font-size:12px;color:var(--mut)}
+.moltoggles{display:flex;gap:20px;margin-top:12px;font-size:14px;color:var(--mut)}
+.moltoggles label{display:flex;gap:7px;align-items:center;cursor:pointer}
+.moltoggles input{accent-color:var(--acc);width:16px;height:16px}
+/* ---------- PERIODIC TABLE ---------- */
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px;font-size:12.5px;color:var(--mut)}
+.lg{display:flex;align-items:center;gap:6px}
+.dot{width:10px;height:10px;border-radius:3px;background:var(--cc)}
+.c0{--cc:#ff6b6b}.c1{--cc:#ffa94d}.c2{--cc:#ffd43b}.c3{--cc:#66d9e8}.c4{--cc:#a9e34b}
+.c5{--cc:#38d9a9}.c6{--cc:#4dabf7}.c7{--cc:#b197fc}.c8{--cc:#f783ac}.c9{--cc:#e599f7}
+.ptwrap{overflow-x:auto;padding-bottom:8px}
+.ptable{display:grid;grid-template-columns:repeat(18,minmax(34px,1fr));gap:4px;min-width:660px}
+.el{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:42px;padding:2px;border-radius:8px;border:1px solid var(--cc);background:rgba(255,255,255,.02);cursor:pointer;transition:.15s;font-family:inherit}
+.el:hover{background:rgba(255,255,255,.09);transform:scale(1.12);z-index:2}
+.el.sel{box-shadow:0 0 0 2px var(--acc)}
+.el i{font-style:normal;font-size:9px;color:var(--mut)}
+.el b{font-size:14px;color:var(--cc)}
+.fmark{display:flex;align-items:center;justify-content:center;min-height:42px;border:1px dashed var(--line);border-radius:8px;font-size:9px;color:var(--mut)}
+.elinfo{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:16px;min-height:110px;flex-wrap:wrap}
+.pick{color:var(--mut)}
+.eltile{width:86px;height:86px;border:2px solid var(--cc);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.03)}
+.eltile i{font-style:normal;font-size:12px;color:var(--mut)}
+.eltile b{font-size:32px;color:var(--cc)}
+.elrows{flex:1;min-width:220px}
+.elrows h3{margin-bottom:8px}
+.er{display:flex;justify-content:space-between;gap:14px;font-size:14px;padding:3px 0;border-bottom:1px dashed rgba(255,255,255,.06)}
+.er span{color:var(--mut)}
+/* ---------- pH ---------- */
+.phcard{display:flex;gap:44px;align-items:center;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.beaker{position:relative;width:150px;height:200px;border:3px solid #8fa6cc;border-top:none;border-radius:0 0 20px 20px;background:rgba(255,255,255,.03);overflow:hidden;flex-shrink:0}
+.liquid{position:absolute;bottom:0;left:0;right:0;height:68%;transition:background .35s;background:#00c853}
+.bub{position:absolute;bottom:-12px;width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55);animation:rise 3s linear infinite}
+.b1{left:25%}.b2{left:55%;width:6px;height:6px;animation-delay:1s}.b3{left:75%;width:10px;height:10px;animation-delay:2s}
+@keyframes rise{to{transform:translateY(-160px);opacity:0}}
+.phctrl{flex:1;min-width:240px}
+.phval b{font-size:44px}
+.phval span{margin-inline-start:14px;font-size:18px;font-weight:600;color:var(--acc)}
+#phRange{width:100%;accent-color:var(--acc);margin-top:14px;cursor:pointer}
+.phscale{display:flex;justify-content:space-between;color:var(--mut);font-size:12px;margin-top:4px}
+/* ---------- QUIZ ---------- */
+.quizcard{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;max-width:640px}
+.qbar{height:6px;background:var(--line);border-radius:99px;overflow:hidden}
+#qprog{height:100%;width:0;background:linear-gradient(90deg,#22e0b8,#4dabf7);transition:.3s}
+.qtop{color:var(--mut);font-size:13px;margin-top:14px}
+.qq{font-size:19px;margin:10px 0 16px;line-height:1.45}
+.opts{display:grid;gap:10px}
+.opt{background:var(--bg2);border:1px solid var(--line);color:var(--tx);padding:13px 16px;border-radius:12px;cursor:pointer;font-size:15px;text-align:start;transition:.2s;font-family:inherit}
+.opt:hover:not(:disabled){border-color:var(--acc)}
+.opt.good{border-color:#2ee6a8;background:rgba(46,230,168,.15)}
+.opt.bad{border-color:#ff6b6b;background:rgba(255,107,107,.15)}
+.opt:disabled{cursor:default}
+.qfb{min-height:26px;font-weight:700;margin:12px 0}
+.qfb.g{color:#2ee6a8}.qfb.b{color:#ff6b6b}
+.qres{text-align:center;padding:16px 0}
+.qemoji{font-size:54px}
+.qres h3{margin:10px 0 18px;font-size:22px}
+/* ---------- CREATORS ---------- */
+.crew{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.mate{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 20px;text-align:center;transition:.25s}
+.mate:hover{transform:translateY(-5px);border-color:rgba(34,224,184,.6)}
+.rank{position:absolute;top:12px;inset-inline-start:14px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#ffd166,#ff9f43);color:#04121c;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.ava{width:86px;height:86px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:#04121c}
+.a1{background:linear-gradient(135deg,#22e0b8,#4dabf7)}
+.a2{background:linear-gradient(135deg,#ffd166,#ff9f43)}
+.a3{background:linear-gradient(135deg,#b197fc,#f783ac)}
+.mate h3{font-size:17px}
+.role{font-size:20px;margin-top:6px}
+footer{padding:30px 20px;text-align:center;color:var(--mut);border-top:1px solid var(--line);font-size:14px}
+.fnames{font-size:12.5px;margin-top:6px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:40px}.atomwrap{width:250px;height:250px}}
+@media(max-width:600px){.sec h2{font-size:24px}#molCanvas{height:320px}.stats{gap:18px}.phcard{gap:24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#top">⚗️ <span>Kimyo</span></a>
+  <nav class="nav">
+    <a href="#facts" data-i18n="navF"></a>
+    <a href="#lab" data-i18n="navL"></a>
+    <a href="#table" data-i18n="navT"></a>
+    <a href="#ph" data-i18n="navP"></a>
+    <a href="#quiz" data-i18n="navQ"></a>
+    <a href="#creators" data-i18n="navC"></a>
+  </nav>
+  <select id="langSel" aria-label="Language"></select>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="badge">⚗️ Kimyo · 2026</span>
+      <h1>Kimyo</h1>
+      <p class="tag" data-i18n="tag"></p>
+      <div class="herobtns">
+        <button id="btnRand" class="btn" data-i18n="b1"></button>
+        <button id="btnFacts" class="btn ghost" data-i18n="b2"></button>
+      </div>
+      <div class="stats">
+        <div><b id="stF">0</b><span data-i18n="sF"></span></div>
+        <div><b id="stL">0</b><span data-i18n="sL"></span></div>
+        <div><b id="stM">0</b><span data-i18n="sM"></span></div>
+        <div><b id="stE">0</b><span data-i18n="sE"></span></div>
+      </div>
+    </div>
+    <div class="atomwrap" aria-hidden="true">
+      <div class="atom">
+        <div class="nucleus">
+          <span class="np p1"></span><span class="np p2"></span><span class="np p3"></span>
+          <span class="nn n1"></span><span class="nn n2"></span><span class="nn n3"></span>
+        </div>
+        <div class="orb o1"><div class="spin s1"><span class="e"></span></div></div>
+        <div class="orb o2"><div class="spin s2"><span class="e"></span></div></div>
+        <div class="orb o3"><div class="spin s3"><span class="e"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <section id="facts" class="sec rev">
+    <h2 data-i18n="fT"></h2><p class="sub" data-i18n="fS"></p>
+    <div id="spot" class="spot" hidden></div>
+    <div class="toolbar">
+      <input id="q" type="search" data-i18n-ph="search">
+      <button id="btnRand2" class="btn small" data-i18n="rand"></button>
+    </div>
+    <div id="chips" class="chips"></div>
+    <p id="note" class="note" hidden></p>
+    <span id="shown" class="shown"></span>
+    <div id="factGrid" class="fgrid"></div>
+    <p id="none" class="none" hidden data-i18n="none"></p>
+    <div class="morewrap"><button id="more" class="btn ghost" data-i18n="more"></button></div>
+  </section>
+
+  <!-- 3D LAB -->
+  <section id="lab" class="sec rev">
+    <h2 data-i18n="lT"></h2><p class="sub" data-i18n="lS"></p>
+    <div class="labcard">
+      <div id="molBtns" class="molbtns"></div>
+      <div class="molstage" dir="ltr">
+        <canvas id="molCanvas"></canvas>
+        <div class="molhud"><span id="molName" class="molname"></span><span class="hint" data-i18n="hint"></span></div>
+      </div>
+      <div class="moltoggles">
+        <label><input type="checkbox" id="lblChk" checked><span data-i18n="lbl"></span></label>
+        <label><input type="checkbox" id="spinChk" checked><span data-i18n="spin"></span></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERIODIC TABLE -->
+  <section id="table" class="sec rev">
+    <h2 data-i18n="tT"></h2><p class="sub" data-i18n="tS"></p>
+    <div id="legend" class="legend"></div>
+    <div class="ptwrap" dir="ltr"><div id="ptable" class="ptable"></div></div>
+    <div id="elInfo" class="elinfo"></div>
+  </section>
+
+  <!-- pH -->
+  <section id="ph" class="sec rev">
+    <h2 data-i18n="pT"></h2><p class="sub" data-i18n="pS"></p>
+    <div class="phcard">
+      <div class="beaker"><div id="liquid" class="liquid"><span class="bub b1"></span><span class="bub b2"></span><span class="bub b3"></span></div></div>
+      <div class="phctrl">
+        <div class="phval"><b id="phVal">7.0</b><span id="phLabel"></span></div>
+        <input id="phRange" type="range" min="0" max="14" step="0.1" value="7">
+        <div class="phscale" dir="ltr"><span>0</span><span>7</span><span>14</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" class="sec rev">
+    <h2 data-i18n="qT"></h2><p class="sub" data-i18n="qS"></p>
+    <div class="quizcard">
+      <div class="qbar"><div id="qprog"></div></div>
+      <div id="qbody"></div>
+    </div>
+  </section>
+
+  <!-- CREATORS -->
+  <section id="creators" class="sec rev">
+    <h2 data-i18n="cT"></h2><p class="sub" data-i18n="cS"></p>
+    <div class="crew">
+      <div class="mate"><div class="rank">1</div><div class="ava a1">RB</div><h3>Rustamov Boʻrixon</h3><p class="role">⚗️</p></div>
+      <div class="mate"><div class="rank">2</div><div class="ava a2">OQ</div><h3>Oqilov Qosim</h3><p class="role">🧪</p></div>
+      <div class="mate"><div class="rank">3</div><div class="ava a3">RU</div><h3>Raximxojayev Ubaydulla</h3><p class="role">🔬</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p data-i18n="foot"></p>
+  <p class="fnames">Rustamov Boʻrixon · Oqilov Qosim · Raximxojayev Ubaydulla · 2026</p>
+</footer>
+
+<script>
+"use strict";
+/* ============ I18N: 24 languages ============ */
+const I18N={
+uz:{name:"Oʻzbek tili",flag:"🇺🇿",dir:"ltr",t:{navF:"Faktlar",navL:"3D lab",navT:"Jadval",navP:"pH",navQ:"Test",navC:"Mualliflar",tag:"Atomlardan koinotgacha — kimyo olamiga qiziqarli sayohat. 100+ fakt, 3D molekulalar va 24 til!",b1:"🎲 Tasodifiy fakt",b2:"🧪 Faktlarni koʻrish",sF:"fakt",sL:"til",sM:"molekula",sE:"element",fT:"⚡ Qiziqarli kimyo faktlari",fS:"Qidiring, saralang va kashf eting!",search:"Fakt qidirish...",all:"Hammasi",rand:"🎲 Tasodifiy",copy:"Nusxa",ok:"Nusxalandi ✓",more:"Yana koʻrsatish",none:"Hech narsa topilmadi 😕",note:"",shown:"{a} / {b} ta fakt",lT:"🧊 3D molekula laboratoriyasi",lS:"Molekulani tanlang va sichqoncha bilan aylantiring!",hint:"🖱️ Sudrab aylantiring",lbl:"Belgilar",spin:"Aylanish",tT:"🧱 Davriy jadval",tS:"Elementni bosing — maʼlumot koʻring",pick:"Elementni tanlang 👆",mass:"Atom mass
